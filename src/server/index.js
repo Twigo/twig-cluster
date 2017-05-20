@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 const api = require('../api');
 let config;
@@ -20,7 +21,9 @@ switch (process.env.TWIG_ENV) {
 }
 
 const app = express();
+app.use(morgan('combined'));
 app.use(bodyParser.json());
+
 app.use('/', api);
 
 mongoose.Promise = Promise;
