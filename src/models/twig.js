@@ -7,8 +7,28 @@ const Twig = mongoose.model('Twig', {
         type: String,
         required: true,
     },
-    attribution: {},
-    context: {},
+    attribution: {
+        userID: {
+            type: String,
+            required: true,
+            index: true,
+        },
+        accountID: {
+            type: String,
+            required: true,
+            index: true,
+        },
+        referrer: String,
+    },
+    context: {
+        timestamp: {
+            type: Date,
+            required: true,  
+        },
+        language: String,
+        platform: String,
+        browser: String,
+    },
 });
 
 Twig.serialize = function () {
