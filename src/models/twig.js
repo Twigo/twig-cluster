@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 
 const Twig = mongoose.model('Twig', {
-    timestamp: Date,
     payload: {},
-    accountID: String,
+    element: String,
+    event: {
+        type: String,
+        required: true,
+    },
+    attribution: {},
+    context: {},
 });
 
 Twig.serialize = function () {
